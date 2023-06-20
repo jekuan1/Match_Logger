@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Admin{% endblock %} {% block content
+%}
+<h1>Admin</h1>
+<form method="POST">
+    <div class="container">
+        <div class="form-group">
+            <label for="player">Player name</label>
+            <input
+            type="text"
+            class="form-control"
+            id="player"
+            name="player"
+            placeholder="Enter name"
+            autocomplete="off"
+            />
+        </div>
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <input
+            type="text"
+            class="form-control"
+            id="rating"
+            name="rating"
+            placeholder="Enter rating"
+            autocomplete="off"
+            />
+        </div>
+        <button type="submit" class="btn btn-primary">Change Rating</button>
+        <br></br>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Player</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in players %}
+            <tr>
+            <th scope="row">{{player.id}}</th>
+            <td>{{player.playerName}}</td>
+            <td>{{player.elo}}</td>
+            <td><a href="{{ url_for('views.player_delete', pid=player.id) }}" class="btn btn-danger" onclick="return confirm('Do you want to permanently delete {{player.playerName}}?')" title="Delete Player">Delete</a>
+                <!--  note there may be bugs accessing old player ids since new players default to 1 when it gets deleted -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </div>
+</form>
+{% endblock %}

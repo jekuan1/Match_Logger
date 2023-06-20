@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block title %}Add Match{% endblock %} {% block
+content %}
+<h1>Add Match</h1>
+
+<link
+  href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<form method="POST">
+  <div class="form-group">
+    <label for="winner">Winner</label>
+    <input
+      type="text"
+      class="form-control"
+      id="winners"
+      name="winner"
+      placeholder="Enter name"
+      autocomplete="off"
+    />
+    <script>
+      var list = {{names|tojson}};
+      $("#winners").autocomplete({
+        source: list,
+      });
+    </script>
+  </div>
+  <div class="form-group">
+    <label for="loser">Loser</label>
+    <input
+      type="text"
+      class="form-control"
+      id="losers"
+      name="loser"
+      placeholder="Enter name"
+      autocomplete="off"
+    />
+    <script>
+      var list = {{names|tojson}};
+      $("#losers").autocomplete({
+        source: list,
+      });
+    </script>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Add Match</button>
+</form>
+{% endblock %}

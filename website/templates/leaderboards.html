@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Leaderboards{% endblock %} {% block
+content %}
+<h1>Leaderboards</h1>
+<script type="text/javascript">
+  setInterval(page_refresh, 60000);
+</script>
+<div class="container mb-5 mt-3">
+  <div class="text-right">
+    <input
+      type="text"
+      id="myInput"
+      onkeyup="myFunction()"
+      placeholder="Search for names..."
+    />
+</div>
+  <br></br>
+  <table class="table" id="myTable">
+    <thead>
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Name</th>
+        <th scope="col">Matches Played</th>
+        <th scope="col">Wins</th>
+        <th scope="col">Losses</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in players %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{player.playerName}}</td>
+        <td>{{player.matchesPlayed}}</td>
+        <td>{{player.wins}}</td>
+        <td>{{player.losses}}</td>
+        <td>{{player.elo}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+</script>
+{% endblock %}

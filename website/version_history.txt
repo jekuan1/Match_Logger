@@ -1,0 +1,27 @@
+remove anacondda
+
+research tournament
+Future Features
+Auto scroll adn reload leaderboards page
+Update admin page to delete matches
+Players have linkable names and can see their individual match history?
+Icons!
+Glicko rating system
+
+1.1.0
+
+Put on WSGI server
+Put on NGINX reverse proxy and load balancer
+Auto complete in textbox for adding matches
+Version History Page
+Player search in table
+Can delete players
+
+
+1.0.0
+
+Working website with all basic functions
+Has Add match, Add player, Base, Leaderboards, and Match History pages
+Can be hosted on macbook and accessed by devices on network
+Can create new databases for March Madness
+Has working time log but no clue how it interacts with time zones

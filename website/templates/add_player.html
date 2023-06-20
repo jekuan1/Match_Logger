@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Add Player{% endblock %} {% block
+content %}
+<form method="POST">
+  <h1>Add Player</h1>
+  <div class="form-group">
+    <label for="player">Player name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="player"
+      name="player"
+      placeholder="Enter name"
+      autocomplete="off"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Add Player</button>
+</form>
+{% endblock %}
